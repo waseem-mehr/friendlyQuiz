@@ -1,0 +1,100 @@
+{% extends 'quiz/main.html' %}
+{% block title %}
+Friendly Quizes
+{% endblock title %}
+{% block  content %}
+<div class="container-fluid">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-9 col-lg-9 col-xs-10 col-sm-10 " style="
+        border-style: solid;
+        border-width: 2px;
+        border-color: #DDDDDD;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: white;
+        margin-left: 20px;
+        margin-right: 20px;
+        
+        ">
+
+      <div class="text-center">
+        <div>
+          <h3>Quiz Results 😃 ! </h3>
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-7 col-lg-7 col-xs-10 col-sm-10">
+              <div class="form-group">
+                <label for="email">Quiz link is bellow:</label>
+
+                <input type="text" class="form-control" value="{{urlofquiz}}" id="link">
+
+                <button class="btn btn-mine btn-successs" onclick=" copyText() ">Copy Link</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{urlofquiz}}"><button
+            class=" btn btn-light text-center text-white form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+            style="background-color: #3b5998;"><i class="fab fa-facebook-f"></i> Facebook</button></a>
+        <a href="https://wa.me/whatsappphonenumber/?text={{urlofquiz}}"><button
+            class=" btn btn-light text-white form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+            style="background-color: #075e54;"><i class="fab fa-whatsapp"></i> WhatsApp</button></a>
+        <a
+          href="https://twitter.com/home?status=I'm%20going%20to%20learn%20to%20Code...%20Come%20build%20an%20web%20apsp%20with%20me!%20%23CFE%20and%20@justinmitchel%20{{urlofquiz}}"><button
+            class=" btn btn-light text-white form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+            style="background-color:  #00acee;"><i class="fab fa-twitter"></i> Twitter</button></a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{urlofquiz}}"><button
+            class=" btn btn-light text-white form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+            style="background-color:  #0e76a8;"><i class="fab fa-linkedin-in"></i> LinkedIn</button></a>
+
+
+
+      </div><br>
+
+      <div>
+
+
+        <div class="container">
+          <table class="table table-fixed">
+            <thead>
+              <tr>
+                <th class="col-xs-3">Friend Name</th>
+                <th class="col-xs-3">Know You</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for score in scores %}
+              <tr>
+                <td class="col-xs-3">{{score.friend|upper}}</td>
+                <td class="col-xs-3">{{score.score}} %</td>
+
+              </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>
+          {% if not request.user.is_authenticate %}
+          <a href="/"><button class="btn btn-mine form-control btn-successs">Create Your Own
+              Quiz</button></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock content%}
+{% block script %}
+<script>
+  function copyText() {
+    /* Get the text field */
+    var copyText = document.getElementById("link"); /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/ /* Copy the text inside the text field */
+    document.execCommand("copy");
+    alert('Link Copied 😃 !');
+  }
+</script> {% endblock script %}

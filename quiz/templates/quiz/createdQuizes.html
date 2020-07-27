@@ -1,0 +1,53 @@
+{% extends 'quiz/main.html' %}
+{% block title %}
+Friendly Quizes
+{% endblock title %}
+{% block  content %}
+<div class="container-fluid">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-9 col-lg-9 col-xs-10 col-sm-10 " style="
+        border-style: solid;
+        border-width: 2px;
+        border-color: #DDDDDD;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: white;
+        margin-left: 20px;
+        margin-right: 20px;
+        
+        ">
+
+      <div class="text-center">
+        <h3>Quiz😃 ! </h3>
+        {% for question in questions %}
+        <div>
+
+          <h3 style="margin-top: 30px;">{{user|capfirst}}'s {{question.quiz.quiz_text}}</h3>
+        </div>
+
+        <button class="btn btn-success btn-mine form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+          type="button">{{question.quiz.quiz_choice1|upper}}</button>
+        <button class="btn btn-success btn-mine form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+          type="button">{{question.quiz.quiz_choice2|upper}}</button>
+        <button class="btn btn-success btn-mine form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+          type="button">{{question.quiz.quiz_choice3|upper}}</button>
+        <button class="btn btn-success btn-mine form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+          type="button">{{question.quiz.quiz_choice4|upper}}</button>
+        <button class="btn btn-success btn-mine form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+          type="button">{{question.quiz.quiz_choice5|upper}}</button>
+
+        <button class="btn btn-light form-control col-md-7 col-lg-7 col-sm-10 col-xs-10"
+          style="margin-top: 5px;background-color: green; color: white;font-weight: 600;" type="button">Answre :
+          {{question.ans|upper}}</button>
+
+
+        {% endfor %}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+{% endblock content%}

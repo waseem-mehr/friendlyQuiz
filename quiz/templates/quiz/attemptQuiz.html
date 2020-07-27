@@ -1,0 +1,62 @@
+{% extends 'quiz/main.html' %}
+{% block title %}
+Friendly Quizes
+{% endblock title %}
+{% block  content %}
+<div class="container-fluid">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-9 col-lg-9 col-xs-10 col-sm-10 " style="
+        border-style: solid;
+        border-width: 2px;
+        border-color: #DDDDDD;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: white;
+        margin-left: 20px;
+        margin-right: 20px;
+        
+        ">
+
+      <div class="text-center">
+        <div>
+          <h3>Welcome to the {{user|title}}'s Quiz 😃 ! </h3>
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-7 col-lg-7 col-xs-10 col-sm-10">
+              <form onsubmit="return  checkText()" method="get" action="/attemptQuiz/{{user}}/quiz/1/">
+                <div class="form-group">
+
+                  <label for="email">Enter yoru name bellow:</label>
+                  <input type="text" class="form-control" id="link" name="friend">
+                  <button class="btn btn-mine btn-successs" type="submit">Start Quiz</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock content%}
+{% block script %}
+<script>
+  function checkText() {
+    /* Get the text field */
+    var copyText = document.getElementById("link").value;
+    if (copyText.trim() == "") {
+      alert("please first enter your name 😤 !");
+      return false;
+    } else if (copyText.length < 4) {
+      alert("please enter your full name 😤 !");
+      return false;
+    } else {
+      return true;
+    }
+
+  }
+</script> {% endblock script %}

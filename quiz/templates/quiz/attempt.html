@@ -1,0 +1,46 @@
+{% extends 'quiz/main.html' %}
+{% block title %}
+Friendly Quizes
+{% endblock title %}
+{% block  content %}
+<div class="container-fluid">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-9 col-lg-9 col-xs-10 col-sm-10 " style="
+        border-style: solid;
+        border-width: 2px;
+        border-color: #DDDDDD;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: white;
+        margin-left: 20px;
+        margin-right: 20px;
+        
+        ">
+
+      <div class="text-center">
+        <div>
+          <h3>Question {{id}} of 10</h3>
+          <h3>{{user|capfirst}}'s {{quiz.quiz_text}}</h3>
+        </div>
+        <form method="post" action="/attemptQuiz/{{user}}/quiz/{{id}}/?friend={{friend}}">
+          {% csrf_token %}
+          <button class="btn-mine btn btn-success form-control col-md-7 col-lg-7 col-sm-10 col-xs-10" name="answer"
+            type="submit" value="{{quiz.quiz_choice1}}">{{quiz.quiz_choice1|upper}}</button>
+          <button class=" btn btn-mine btn-success form-control col-md-7 col-lg-7 col-sm-10 col-xs-10" name="answer"
+            type="submit" value="{{quiz.quiz_choice2}}">{{quiz.quiz_choice2|upper}}</button>
+          <button class=" btn btn-mine btn-success form-control col-md-7 col-lg-7 col-sm-10
+            col-xs-10" value="{{quiz.quiz_choice3}}" name="answer" type="submit">{{quiz.quiz_choice3|upper}}</button>
+          <button class="btn btn-success btn-mine form-control col-md-7 col-lg-7 col-sm-10 col-xs-10" name="answer"
+            type="submit" value="{{quiz.quiz_choice4}}">{{quiz.quiz_choice4|upper}}</button>
+          <button class="btn btn-success btn-mine form-control col-md-7 col-lg-7 col-sm-10 col-xs-10" name="answer"
+            type="submit" value="{{quiz.quiz_choice5}}">{{quiz.quiz_choice5|upper}}</button>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock content%}

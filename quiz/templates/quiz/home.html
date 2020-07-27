@@ -1,0 +1,91 @@
+{% extends 'quiz/main.html' %}
+{% block title %}
+Friendly
+{% endblock title %}
+{% block  content %}
+<div class="container-fluid">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-9 col-lg-9 col-xs-10 col-sm-10 " style="
+        border-style: solid;
+        border-width: 2px;
+        border-color: #DDDDDD;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: white;
+        margin-left: 20px;
+        margin-right: 20px;
+        
+        ">
+
+            <div class="text-center">
+                <div>
+                    <h3>Do your friends really know you?</h3>
+                    <p>
+                        <ol class="center">
+                            <li>Answer questions about yourself.</li>
+                            <li>Your quiz link will be created.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li>Send link to your
+                                friends.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </li>
+                            <li>Come back to see their results.&nbsp;&nbsp;&nbsp;</li>
+                        </ol>
+                    </p>
+
+                </div>
+                {% if not create %}
+                <form method="post" action="/quiz/1/">
+                    {% csrf_token %}
+                    <button class="btn btn-success btn-mine" style="font-weight: 600;">START
+                        NOW</button>
+                </form>
+                {% else %}
+                <a href="/results/"><button class="btn btn-success btn-mine" style="font-weight: 600;">RESULTS</button></a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="container-fluid" style="margin-top:30px;">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-4 col-lg-4 col-xs-10 col-sm-10">
+            <div class="text-center">
+                <h3>Ask Questions</h3>
+                <p>Make your quiz - create 10 best questions about yourself. You can use our examples to create the
+                    quiz and share with friends.</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-xs-10 col-sm-10">
+            <div class="text-center">
+                <h3>Get Answers</h3>
+                <p>It's not an exam, so don’t debate for too long about which answers to mark. Just select the one
+                    that seems to describe you most accurately at first glance.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="container-fluid" style="margin-top:10px;">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-4 col-lg-4 col-xs-10 col-sm-10">
+            <div class="text-center">
+                <h3>Its Fun</h3>
+                <p>This page is intended for fun only! You'll see your friends' results chart. If someone gets all the
+                    answers right, they will score 10 points.</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-xs-10 col-sm-10">
+            <div class="text-center">
+                <h3>Enjoy and share</h3>
+                <p>After answering all the questions you'll get a link to your quiz. Share it with your friends on
+                    Whatsapp or Messenger to check how well they really know you.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock content%}
